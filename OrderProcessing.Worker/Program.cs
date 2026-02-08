@@ -12,6 +12,7 @@ var services = new ServiceCollection();
 
 services.AddLogging(b =>
 {
+    b.AddConsole();
     b.SetMinimumLevel(LogLevel.Information);
 });
 

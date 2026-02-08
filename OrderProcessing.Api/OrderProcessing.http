@@ -1,6 +1,6 @@
 @OrderProcessing_HostAddress = http://localhost:5000
 
-# Create order (local dotnet run)
+# Create order
 POST {{OrderProcessing_HostAddress}}/orders
 Accept: application/json
 Content-Type: application/json

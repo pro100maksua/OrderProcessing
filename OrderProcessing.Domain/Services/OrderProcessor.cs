@@ -31,6 +31,7 @@ public class OrderProcessor : IOrderProcessor
         }
 
         // processing
+        await Task.Delay(2000);
 
         order.DateProcessed = DateTime.UtcNow;
         order.Status = OrderStatus.Processed;
