@@ -1,0 +1,6 @@
+@OrderProcessing_HostAddress = http://localhost:5072
+
+POST {{OrderProcessing_HostAddress}}/orders/
+Accept: application/json
+
+###
