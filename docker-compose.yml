@@ -1,0 +1,63 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: orders
+      POSTGRES_PASSWORD: orders123
+      POSTGRES_DB: OrderProcessingDb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB} || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli ping || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: .
+      dockerfile: OrderProcessing.Api/Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      # override configuration keys from appsettings.json
+      ConnectionStrings__Database: "Host=db;Port=5432;Database=OrderProcessingDb;Username=orders;Password=orders123"
+      Redis__ConnectionString: "redis:6379"
+    ports:
+      - "5000:8080"
+    restart: on-failure
+
+  worker:
+    build:
+      context: .
+      dockerfile: OrderProcessing.Worker/Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      ConnectionStrings__Database: "Host=db;Port=5432;Database=OrderProcessingDb;Username=orders;Password=orders123"
+      Redis__ConnectionString: "redis:6379"
+    restart: on-failure
+
+volumes:
+  pgdata:

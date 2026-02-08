@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using OrderProcessing.Persistence.Interfaces;
 using OrderProcessing.Persistence.Models;
 
@@ -10,6 +11,12 @@ public class OrdersRepository : IOrdersRepository
     public OrdersRepository(OrderProcessingDbContext context)
     {
         _context = context;
+    }
+
+    public Task<Order?> Get(Guid id)
+    {
+        return _context.Orders.Include(e => e.Items)
+            .FirstOrDefaultAsync(e => e.Id == id);
     }
 
     public void Add(Order order)

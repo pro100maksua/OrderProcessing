@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "OrderProcessing.Worker": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}

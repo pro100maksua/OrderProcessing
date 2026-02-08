@@ -7,11 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OrderProcessing.Persistence\OrderProcessing.Persistence.csproj" />
+    <PackageReference Include="StackExchange.Redis" Version="2.10.14" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="NewFolder\" />
+    <ProjectReference Include="..\OrderProcessing.Persistence\OrderProcessing.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

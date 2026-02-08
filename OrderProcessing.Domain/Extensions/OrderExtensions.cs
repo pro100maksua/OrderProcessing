@@ -46,6 +46,7 @@ namespace OrderProcessing.Domain.Extensions
             {
                 CustomerId = dto.CustomerId,
                 TotalAmount = dto.TotalAmount,
+                DateCreated = DateTime.UtcNow,
                 Status = OrderStatus.Created,
                 Items = dto.Items.Select(i => new OrderItem
                 {

@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderProcessing.Domain", "O
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderProcessing.Persistence", "OrderProcessing.Persistence\OrderProcessing.Persistence.csproj", "{712F5873-7309-4A16-BD79-D015E9389938}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderProcessing.Worker", "OrderProcessing.Worker\OrderProcessing.Worker.csproj", "{3E077955-3179-4C7E-9D78-8987F51B15A2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{712F5873-7309-4A16-BD79-D015E9389938}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{712F5873-7309-4A16-BD79-D015E9389938}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{712F5873-7309-4A16-BD79-D015E9389938}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E077955-3179-4C7E-9D78-8987F51B15A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E077955-3179-4C7E-9D78-8987F51B15A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E077955-3179-4C7E-9D78-8987F51B15A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E077955-3179-4C7E-9D78-8987F51B15A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

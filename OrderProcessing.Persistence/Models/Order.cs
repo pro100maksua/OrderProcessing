@@ -8,6 +8,9 @@ public class Order
 
     public decimal TotalAmount { get; set; }
 
+    public DateTime DateCreated { get; set; }
+    public DateTime? DateProcessed { get; set; }
+
     public OrderStatus Status { get; set; }
 
     public ICollection<OrderItem> Items { get; set; }

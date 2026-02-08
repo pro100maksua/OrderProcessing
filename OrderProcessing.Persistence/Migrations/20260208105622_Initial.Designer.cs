@@ -12,7 +12,7 @@ using OrderProcessing.Persistence;
 namespace OrderProcessing.Persistence.Migrations
 {
     [DbContext(typeof(OrderProcessingDbContext))]
-    [Migration("20260208092659_Initial")]
+    [Migration("20260208105622_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -33,6 +33,12 @@ namespace OrderProcessing.Persistence.Migrations
 
                     b.Property<Guid>("CustomerId")
                         .HasColumnType("uuid");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("DateProcessed")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("Status")
                         .HasColumnType("integer");
